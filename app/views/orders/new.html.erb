@@ -1,0 +1,14 @@
+<h1>New Order</h1>
+
+<%= form_with model: @order do |form| %>
+  <div>
+    <%= form.label :address %><br>
+    <%= form.text_field :address %>
+    <% @order.errors.full_messages_for(:address).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

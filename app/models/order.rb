@@ -3,5 +3,5 @@ class Order < ApplicationRecord
   
   validates :address, presence: true
 
-  enum status: { pending: 'Pending', completed: 'Completed' }
+  enum status: { pending: 'pending', completed: 'completed' }
 end

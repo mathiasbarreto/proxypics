@@ -1,0 +1,19 @@
+<h1> Order Detail </h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Date of creation</th>
+      <th scope="col">Address</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @order.id %></td>
+      <td><%= @order.created_at %></td>
+      <td><%= @order.address %></td>
+      <td><%= @order.status %></td>
+    </tr>
+  </tbody>
+</table>
