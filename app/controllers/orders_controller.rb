@@ -20,10 +20,24 @@ class OrdersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def edit
+    @order = Order.find(params[:id])
+  end
+
+  def update
+    @order = Order.find(params[:id])
+
+    if @order.update(order_params)
+      redirect_to @order
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
   
   private
 
   def order_params
-    params.require(:order).permit(:address, :status, :photos, :requester_id)
+    params.require(:order).permit(:id, :address, :status, :photos)
   end
 end
