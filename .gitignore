@@ -42,3 +42,4 @@ Guardfile
 *.pem
 
 /.vscode
+/log/*
