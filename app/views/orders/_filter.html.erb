@@ -3,7 +3,7 @@
 <div class = 'd-flex'>
   <%= date_field_tag :start_date, params[:start_date], class: "form-control" %>
   <%= date_field_tag :end_date, params[:end_date], class: "form-control" %>
-  <%= select_tag :status, options_for_select([['pending', 'pending'],['completed', 'completed']]), class: "form-control" %>
+  <%= select_tag :status, options_for_select([['all', ''], ['pending', 'pending'],['completed', 'completed']]), class: "select" %>
   <%= text_field_tag :address, params[:address], class: "form-control", placeholder: "Filter by address "%>
   <%= submit_tag "Search", class: "btn btn-primary ml-2" %>
 </div>
