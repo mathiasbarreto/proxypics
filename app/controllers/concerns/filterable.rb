@@ -4,8 +4,9 @@ module Filterable
   module ClassMethods
     def filter(filtering_params)
       results = self.where(nil) # create an anonymous scope
+
       filtering_params.each do |key, value|
-        results = results.public_send(key, value) if value.present?
+        results = results.public_send("filter_by_#{key}", value) if value.present?
       end
       results
     end

@@ -43,6 +43,6 @@ class OrdersController < ApplicationController
   end
 
   def filtered_params
-    params.slice(:address, :status)
+    params.slice(:address, :status, :start_date, :end_date)
   end
 end
