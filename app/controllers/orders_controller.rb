@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
+  include Paginable
+
   def index
-    @orders = Order.filter(filtered_params)
+    @orders = Order.filter(filtered_params).page(@page).per(@per_page)
   end
   
   def show
