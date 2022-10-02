@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
+
   def index
-    @orders = Order.all
+    @orders = Order.filter(filtered_params)
   end
   
   def show
@@ -39,5 +40,9 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:id, :address, :status, :photos)
+  end
+
+  def filtered_params
+    params.slice(:address, :status)
   end
 end
