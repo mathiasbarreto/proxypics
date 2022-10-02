@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   include Paginable
 
   def index
-    @orders = Order.filter(filtered_params).page(@page).per(@per_page)
+    @orders = Order.filter(filtered_params).with_attached_images.page(@page).per(@per_page)
   end
   
   def show
@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:id, :address, :status, :photos)
+    params.require(:order).permit(:id, :address, :status, images: [])
   end
 
   def filtered_params

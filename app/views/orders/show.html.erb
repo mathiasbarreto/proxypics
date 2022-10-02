@@ -14,6 +14,11 @@
       <td><%= @order.created_at %></td>
       <td><%= @order.address %></td>
       <td><%= @order.status %></td>
+      <% if @order.images.attached? %>
+        <% @order.images.each do  %>
+          <td><%= image_tag image.variant(resize: "500x500") %></td>
+        <% end %>
+       <% end %>
     </tr>
   </tbody>
 </table>

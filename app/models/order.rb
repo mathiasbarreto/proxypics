@@ -1,7 +1,8 @@
 class Order < ApplicationRecord
   include Filterable
 
-  has_many :photos
+  has_many_attached :images, dependent: :destroy
+
   validates :address, presence: true, length: { maximum: 50 }
   enum status: { pending: 'pending', completed: 'completed' }
 

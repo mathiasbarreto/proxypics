@@ -38,6 +38,8 @@ gem "byebug"
 
 gem "faker"
 
+gem 'image_processing', '~> 1.2'
+
 gem "awesome_print", require: "ap"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]

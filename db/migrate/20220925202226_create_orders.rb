@@ -3,7 +3,7 @@ class CreateOrders < ActiveRecord::Migration[7.0]
     create_table :orders do |t|
       t.string :address
       t.string :status, default: "pending"
-      t.string :photos
+      t.string :images
 
       t.timestamps
     end
