@@ -43,6 +43,15 @@ class OrdersController < ApplicationController
   end
 
   def filtered_params
-    params.slice(:address, :status, :start_date, :end_date)
+    p = {}
+
+    p[:status] = params[:status] if params[:status].present?
+    p[:address] = params[:address] if params[:address].present?
+    p[:status] = params[:status] if params[:status].present?
+    p[:date] = {}
+    p[:date][:start_date] = params[:start_date] if params[:start_date].present?
+    p[:date][:end_date] = params[:end_date] if params[:end_date].present?
+  
+    p
   end
 end

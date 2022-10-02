@@ -9,6 +9,6 @@ class Order < ApplicationRecord
 
   scope :filter_by_status, -> (status) { where status: status }
   scope :filter_by_address, -> (address) { where("lower (address) ILIKE :value", value: "%#{address.downcase}%")}
-  scope :filter_by_start_date, -> (start_date) { where("created_at > ?", start_date)}
-  scope :filter_by_end_date, -> (end_date) { where("created_at < ?", end_date)}
+  scope :filter_by_date, -> (start_date, end_date) { where(created_at: start_date..end_date) }
+
 end
