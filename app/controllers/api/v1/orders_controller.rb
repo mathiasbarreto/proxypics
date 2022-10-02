@@ -1,12 +1,16 @@
-class OrdersController < ApplicationController
+class Api::V1::OrdersController < ApplicationController
   include Paginable
   before_action :set_order, only: %i[show, edit, update]
 
   def index
     @orders = Order.filter(filtered_params).with_attached_images.page(@page).per(@per_page)
+    
+    render json: @orders
   end
   
-  def show;end  
+  def show
+    render json: @order
+  end  
 
   def new
     @order = Order.new
@@ -16,20 +20,19 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     if @order.save
-      redirect_to @order
+      render json: @order, status: created, location: @order
     else
-      render :new, status: :unprocessable_entity
+      render json: @order.errors, status: :unprocessable_entity
     end
   end
 
   def edit;end
-  end
 
   def update
     if @order.update(order_params)
-      redirect_to @order
+      render json: @order
     else
-      render :edit, status: :unprocessable_entity
+      render json: @order.errors, status: :unprocessable_entity
     end
   end
   
