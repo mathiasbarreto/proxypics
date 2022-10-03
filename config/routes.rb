@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :assignees
   devise_for :requesters
-  root "orders#index"
+  
+  get "home/index"  
+  root to: "home#index"  
 
   namespace :api do
     namespace :v1 do
