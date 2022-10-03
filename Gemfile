@@ -36,6 +36,8 @@ gem "kaminari"
 
 gem "byebug"
 
+gem 'bootstrap', '~> 5.1.3'
+
 gem "faker"
 
 gem 'image_processing', '~> 1.2'

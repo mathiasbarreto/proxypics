@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :requesters
   root "orders#index"
 
   namespace :api do
