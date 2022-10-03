@@ -1,0 +1,2 @@
+class Requester < ApplicationRecord
+end

@@ -12,6 +12,6 @@ module Authenticable
   end
 
   def has_valid_api_key?
-    Requester.find_by(apikey: request.headers['Authorization']).present?
+    Requester.find_by(apikey: request.headers['Authorization'].gsub('Bearer','').strip).present?
   end
 end
