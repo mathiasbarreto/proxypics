@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   include Paginable
-  before_action :set_order, only: %i[show, edit, update]
+  before_action :set_order, only: %i[show edit update]
 
   def index
     @orders = Order.filter(filtered_params).with_attached_images.page(@page).per(@per_page)
@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
   end
 
   def edit;end
-  end
+  
 
   def update
     if @order.update(order_params)

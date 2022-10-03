@@ -1,11 +1,12 @@
 class Api::V1::OrdersController < ApplicationController
   include Paginable
-  before_action :set_order, only: %i[show, edit, update]
+  include Authenticable
+  before_action :set_order, only: %i[show edit update]
 
   def index
-    @orders = Order.filter(filtered_params).with_attached_images.page(@page).per(@per_page)
+    @orders = Order.filter(filtered_params).page(@page).per(@per_page)
     
-    render json: @orders
+    render json: @orders, status: 200
   end
   
   def show
@@ -20,7 +21,7 @@ class Api::V1::OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     if @order.save
-      render json: @order, status: created, location: @order
+      render json: @order, status: 201
     else
       render json: @order.errors, status: :unprocessable_entity
     end
@@ -30,7 +31,7 @@ class Api::V1::OrdersController < ApplicationController
 
   def update
     if @order.update(order_params)
-      render json: @order
+      render json: @order, status: 200
     else
       render json: @order.errors, status: :unprocessable_entity
     end
