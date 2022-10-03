@@ -3,7 +3,7 @@ class Api::V1::OrdersController < ApplicationController
   include Authenticable
   
   before_action :set_order, only: %i[show edit update]
-
+  
   def index
     @orders = Order.filter(filtered_params).page(@page).per(@per_page)
 
@@ -18,7 +18,7 @@ class Api::V1::OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def create 
+  def create
     @order = Order.new(order_params)
 
     if @order.save
@@ -45,7 +45,7 @@ class Api::V1::OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:id, :address, :status, images: [])
+    params.permit(:id, :address, :status, :start_date, :end_date)
   end
 
   def filtered_params
