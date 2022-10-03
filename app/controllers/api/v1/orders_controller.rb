@@ -6,12 +6,12 @@ class Api::V1::OrdersController < ApplicationController
 
   def index
     @orders = Order.filter(filtered_params).page(@page).per(@per_page)
-    
-    render json: @orders, status: 200
+
+    render json: @orders, status: 200, each_serializer: OrderSerializer
   end
   
   def show
-    render json: @order
+    render json: @order, status: 200, each_serializer: OrderSerializer
   end  
 
   def new
@@ -22,9 +22,9 @@ class Api::V1::OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     if @order.save
-      render json: @order, status: 201
+      render json: @order, status: 201, each_serializer: OrderSerializer
     else
-      render json: @order.errors, status: :unprocessable_entity
+      render json: @order.errors, status: :unprocessable_entity, each_serializer: OrderSerializer
     end
   end
 
@@ -32,9 +32,9 @@ class Api::V1::OrdersController < ApplicationController
 
   def update
     if @order.update(order_params)
-      render json: @order, status: 200
+      render json: @order, status: 200, each_serializer: OrderSerializer
     else
-      render json: @order.errors, status: :unprocessable_entity
+      render json: @order.errors, status: :unprocessable_entity, each_serializer: OrderSerializer
     end
   end
   
