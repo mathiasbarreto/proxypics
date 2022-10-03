@@ -1,35 +1,40 @@
-class OrdersController < ApplicationController
+class Api::V1::OrdersController < ApplicationController
   include Paginable
+  include Authenticable
+  
   before_action :set_order, only: %i[show edit update]
-
+  
   def index
-    @orders = Order.filter(filtered_params).with_attached_images.page(@page).per(@per_page)
+    @orders = Order.filter(filtered_params).page(@page).per(@per_page)
+
+    render json: @orders, status: 200, each_serializer: OrderSerializer
   end
   
-  def show;end  
+  def show
+    render json: @order, status: 200, each_serializer: OrderSerializer
+  end  
 
   def new
     @order = Order.new
   end
 
-  def create 
+  def create
     @order = Order.new(order_params)
 
     if @order.save
-      redirect_to @order
+      render json: @order, status: 201, each_serializer: OrderSerializer
     else
-      render :new, status: :unprocessable_entity
+      render json: @order.errors, status: :unprocessable_entity, each_serializer: OrderSerializer
     end
   end
 
   def edit;end
-  
 
   def update
     if @order.update(order_params)
-      redirect_to @order
+      render json: @order, status: 200, each_serializer: OrderSerializer
     else
-      render :edit, status: :unprocessable_entity
+      render json: @order.errors, status: :unprocessable_entity, each_serializer: OrderSerializer
     end
   end
   
@@ -40,7 +45,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:id, :address, :status, images: [])
+    params.permit(:id, :address, :status, :start_date, :end_date)
   end
 
   def filtered_params
