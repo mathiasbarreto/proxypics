@@ -17,9 +17,9 @@
     </tr>
   </tbody>
 </table>
-
+</br>
 <button type="button" class="btn btn-primary btn-sm"><td><%= link_to 'All Orders', orders_path %> </td></button>
-
+</br>
   <% if @order.images.attached? %>
     <% @order.images.each do |image| %>
     <%= image_tag image%>
