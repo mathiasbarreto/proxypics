@@ -1,6 +1,7 @@
 class Api::V1::OrdersController < ApplicationController
   include Paginable
   include Authenticable
+  
   before_action :set_order, only: %i[show edit update]
 
   def index
