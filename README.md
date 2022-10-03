@@ -7,8 +7,8 @@ application up and running.
 Steps to run:
 
 
-1 - rails db:create
-2 - rails db:migrate
-3 - rails db:seed
+- 1. rails db:create
+- 2. rails db:migrate
+- 3. rails db:seed
 
 * ...
