@@ -7,7 +7,7 @@ application up and running.
 Steps to run:
 
 
-- 1. install ruby 3.1.1
+- 1. install ruby 3.1.1 (via asdf, rvm, rbenv, whatever)
 - 2. gem install rails
 - 3. bundle install
 - 4. rails db:create
