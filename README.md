@@ -12,4 +12,4 @@ Steps to run:
 - 7. rails db:seed
 - 8. rails s
 
-* ...
+any doubts, feel free to reach me out at mathiasbarreto.dev@gmail.com
