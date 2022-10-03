@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   include Filterable
 
-  has_many_attached :images, dependent: :destroy
+  has_many_attached :images
 
   validates :address, presence: true, length: { maximum: 50 }
   before_update :set_completed, if: :order_pending_and_images_attached?
