@@ -36,11 +36,16 @@ gem "kaminari"
 
 gem "byebug"
 
+gem 'bootstrap', '~> 5.1.3'
+
 gem "faker"
 
 gem 'image_processing', '~> 1.2'
 
+gem 'rack-attack'
+
 gem "awesome_print", require: "ap"
+gem 'active_model_serializers', '~> 0.10.2'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
