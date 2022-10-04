@@ -4,7 +4,9 @@ class OrdersController < ApplicationController
   before_action :set_order, only: %i[show edit update]
   
   def index
-    @orders = Order.filter(filtered_params).with_attached_images.page(@page).per(@per_page)
+    @orders = Order.filter(filtered_params).with_attached_images
+                   .page(@page).per(@per_page)
+                   .order(created_at: :desc)
   end
   
   def show;end  
