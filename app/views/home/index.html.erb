@@ -1,0 +1,18 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url();">
+  <div class="container">
+    <h1><strong>The evolution </strong> of real state <strong>inspections and appraisals</strong></h1>
+    <p> Up to date photos and property details in a matter of hours</p>
+    <% unless requester_signed_in? %>
+      <a class="btn btn-flat" href="http://localhost:3000/requesters/sign_in">Login to Order now</a>
+    <% end %>
+     <% if requester_signed_in? %>
+      <a class="btn btn-flat" href="http://localhost:3000/orders">Order now</a>
+    <% end %> ||
+    <% unless assignee_signed_in? %>
+      <a class="btn btn-flat" href="http://localhost:3000/assignees/sign_in">Login to Make mokey</a>
+    <% end %>
+    <% if assignee_signed_in? %>
+      <a class="btn btn-flat" href="http://localhost:3000/orders">Submit photos </a>
+    <% end %>  
+  </div>
+</div>

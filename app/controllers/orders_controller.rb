@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   include Paginable
+  before_action :authenticate!
   before_action :set_order, only: %i[show edit update]
-
+  
   def index
     @orders = Order.filter(filtered_params).with_attached_images.page(@page).per(@per_page)
   end
@@ -54,5 +55,11 @@ class OrdersController < ApplicationController
     p[:date][:end_date] = params[:end_date] if params[:end_date].present?
   
     p
+  end
+
+  def authenticate!
+    unless requester_signed_in? || assignee_signed_in?
+      authenticate_requester! || authenticate_assignee!
+    end
   end
 end

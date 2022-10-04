@@ -18,7 +18,7 @@
         <td><%= order.created_at.strftime("%m/%d/%Y") %></td>
         <td><%= order.address %></td>
         <td><%= order.status %></td>
-        <% if order.status == 'pending' %>
+        <% if order.status == 'pending' && assignee_signed_in? %>
           <td><%= link_to 'Submit Photos', edit_order_path(order) %> </td>
         <% end %>
         <td><%= link_to 'See Details', order%> </td>
