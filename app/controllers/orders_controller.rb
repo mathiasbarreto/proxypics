@@ -1,10 +1,8 @@
 class OrdersController < ApplicationController
   include Paginable
   before_action :authenticate!
-  before_action :authenticate_assignee!, only: %i[edit]
   before_action :set_order, only: %i[show edit update]
   
-
   def index
     @orders = Order.filter(filtered_params).with_attached_images.page(@page).per(@per_page)
   end
@@ -37,11 +35,6 @@ class OrdersController < ApplicationController
   end
   
   private
-
-  def authenticate!
-    authenticate_assignee! || authenticate_requester!
-  end
-
 
   def set_order
     @order = Order.find(params[:id])
