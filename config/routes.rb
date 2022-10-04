@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :assignees
   devise_for :requesters
   
   root to: "home#index"
