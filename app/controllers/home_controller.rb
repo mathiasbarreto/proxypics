@@ -1,6 +1,4 @@
-class HomeController < ApplicationController
-  skip_before_action :authenticate_requester!
-  
+class HomeController < ApplicationController  
   def index
   end
 end
