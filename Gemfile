@@ -47,6 +47,8 @@ gem 'rack-attack'
 gem "awesome_print", require: "ap"
 gem 'active_model_serializers', '~> 0.10.2'
 
+gem 'solargraph', '~> 0.47.2'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
