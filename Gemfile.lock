@@ -341,8 +341,9 @@ DEPENDENCIES
   rails (~> 7.0.4)
   redis (~> 4.0)
   sass-rails
+  sassc-rails
   selenium-webdriver
-  solargraph
+  solargraph (~> 0.47.2)
   sprockets-rails
   stimulus-rails
   turbo-rails
