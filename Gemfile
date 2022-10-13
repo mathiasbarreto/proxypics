@@ -70,6 +70,10 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0.2'
   gem 'factory_bot_rails', '~> 6.2.0'
   gem 'database_cleaner-active_record', '~> 1.8.0.beta'
+  gem 'rails-controller-testing', '~> 1.0.5'
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'pry-rails'
 end
 
 group :development do

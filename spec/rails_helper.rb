@@ -40,6 +40,9 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Warden::Test::Helpers, type: :request
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)

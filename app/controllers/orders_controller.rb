@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   include Paginable
-  before_action :authenticate!
-  before_action :set_order, only: %i[show edit update]
+  # before_action :authenticate!
+  before_action :set_order, only: %i[show edit update destroy]
   
   def index
     @orders = Order.filter(filtered_params).with_attached_images
@@ -34,6 +34,11 @@ class OrdersController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @order.destroy
+    redirect_to orders_path
   end
   
   private
