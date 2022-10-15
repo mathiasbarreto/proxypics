@@ -1,6 +1,17 @@
 require 'rails_helper'
+require_relative "../support/controller_macros"
+require_relative "../support/devise"
 
 RSpec.describe OrdersController, type: :controller do
+  login_requester
+
+  context "from login requester" do
+    it "should get index" do
+      get :index
+      expect(response).to have_http_status(:success)
+    end
+  end
+    # note the fact that you should remove the "validate_session" parameter if this was a scaffold-generated controller  end
   
   describe 'GET #index' do
     it 'should sucess and render index' do
