@@ -3,16 +3,17 @@
     <h1><strong>The evolution </strong> of real state <strong>inspections and appraisals</strong></h1>
     <p> Up to date photos and property details in a matter of hours</p>
     <% unless requester_signed_in? %>
-      <a class="btn btn-flat" href="http://localhost:3000/requesters/sign_in">Login to Order now</a>
+       <%= link_to 'Login to Order now', new_requester_session_path, class: "btn btn-flat" %> 
     <% end %>
      <% if requester_signed_in? %>
-      <a class="btn btn-flat" href="http://localhost:3000/orders">Order now</a>
+      <%= link_to 'Order now', orders_path, class: "btn btn-flat" %> 
     <% end %> ||
     <% unless assignee_signed_in? %>
-      <a class="btn btn-flat" href="http://localhost:3000/assignees/sign_in">Login to Make mokey</a>
+      <%= link_to 'Login to Make mokey', new_assignee_session_path, class: "btn btn-flat" %> 
+      
     <% end %>
     <% if assignee_signed_in? %>
-      <a class="btn btn-flat" href="http://localhost:3000/orders">Submit photos </a>
+      <%= link_to 'Submit photos', orders_path, class: "btn btn-flat" %> 
     <% end %>  
   </div>
 </div>
