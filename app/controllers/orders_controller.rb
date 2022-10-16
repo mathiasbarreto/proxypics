@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   include Paginable
   before_action :authenticate!
-  before_action :set_order, only: %i[show edit update]
+  before_action :set_start_and_end_date
+  before_action :set_order, only: %i[show edit update destroy]
   
   def index
     @orders = Order.filter(filtered_params).with_attached_images
@@ -35,6 +36,11 @@ class OrdersController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @order.destroy
+    redirect_to orders_path
+  end
   
   private
 
@@ -53,10 +59,15 @@ class OrdersController < ApplicationController
     p[:address] = params[:address] if params[:address].present?
     p[:status] = params[:status] if params[:status].present?
     p[:date] = {}
-    p[:date][:start_date] = params[:start_date] if params[:start_date].present?
-    p[:date][:end_date] = params[:end_date] if params[:end_date].present?
+    p[:date][:start_date] = @start_date 
+    p[:date][:end_date] = @end_date
   
     p
+  end
+
+  def set_start_and_end_date
+    @start_date = params[:start_date].present? ? params[:start_date] : Time.zone.today - 180.days
+    @end_date = params[:end_date].present? ? params[:end_date] : Time.zone.today
   end
 
   def authenticate!
