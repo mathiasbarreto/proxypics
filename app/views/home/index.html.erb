@@ -1,19 +1,21 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url();">
+<% content_for(:navbar_class, "navbar-home")%>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/2179205/pexels-photo-2179205.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);">
   <div class="container">
     <h1><strong>The evolution </strong> of real state <strong>inspections and appraisals</strong></h1>
     <p> Up to date photos and property details in a matter of hours</p>
     <% unless requester_signed_in? %>
-       <%= link_to 'Login to Order now', new_requester_session_path, class: "btn btn-flat" %> 
+       <%= link_to 'Login to Order now', new_requester_session_path, class: "btn btn-lg btn-primary" %> 
     <% end %>
      <% if requester_signed_in? %>
-      <%= link_to 'Order now', orders_path, class: "btn btn-flat" %> 
+      <%= link_to 'Order now', orders_path, class: "btn btn-lg btn-primary" %> 
     <% end %> ||
     <% unless assignee_signed_in? %>
-      <%= link_to 'Login to Make mokey', new_assignee_session_path, class: "btn btn-flat" %> 
+      <%= link_to 'Login to Make mokey', new_assignee_session_path, class: "btn btn-lg btn-primary" %> 
       
     <% end %>
     <% if assignee_signed_in? %>
-      <%= link_to 'Submit photos', orders_path, class: "btn btn-flat" %> 
+      <%= link_to 'Submit photos', orders_path, class: "btn btn-lg btn-primary" %> 
     <% end %>  
   </div>
 </div>
