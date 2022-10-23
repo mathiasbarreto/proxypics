@@ -18,8 +18,14 @@ gem "puma", "~> 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
+gem "simple_form", github: "heartcombo/simple_form"
+
+gem "autoprefixer-rails"
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
+
+gem "autoprefixer-rails"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
@@ -60,9 +66,11 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
-
+gem "font-awesome-sass", "~> 6.1"
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
+gem "autoprefixer-rails"
+gem "simple_form", github: "heartcombo/simple_form"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -95,3 +103,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "cssbundling-rails", "~> 1.1"
+
+gem "jsbundling-rails", "~> 1.0"
