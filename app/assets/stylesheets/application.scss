@@ -10,3 +10,24 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+a {
+  color: #2A9057;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.btn a {
+  color: $white;
+  text-decoration: none;
+}
+
+
+.btn-success{
+  background-color: #2A9057;
+  &:hover {
+    background-color: #51CC70;
+  }
+}
