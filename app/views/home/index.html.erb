@@ -8,13 +8,13 @@
        <%= link_to 'Login to Order now', new_requester_session_path, class: "btn btn-lg btn-flat" %> 
     <% end %>
      <% if requester_signed_in? %>
-      <%= link_to 'Order now', orders_path, class: "btn btn-lg btn-flat" %> 
+      <%= link_to 'Order now', orders_path, class: "btn btn-lg btn-success" %> 
     <% end %> 
     <% unless assignee_signed_in? %>
       <%= link_to 'Login to Make mokey', new_assignee_session_path, class: "btn btn-lg btn-flat" %> 
     <% end %>
     <% if assignee_signed_in? %>
-      <%= link_to 'Submit photos', orders_path, class: "btn btn-lg btn-flat" %> 
+      <%= link_to 'Submit photos', orders_path, class: "btn btn-lg btn-success" %> 
     <% end %>  
   </div>
 </div>

@@ -26,8 +26,12 @@ a {
 
 
 .btn-success{
+  color: $white;
   background-color: #2A9057;
+  border-color: #2A9057;
   &:hover {
     background-color: #51CC70;
+    border-color: #2A9057;
+    color: $white;
   }
 }
