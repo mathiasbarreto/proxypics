@@ -8,9 +8,21 @@ class OrdersController < ApplicationController
     @orders = Order.filter(filtered_params).with_attached_images
                    .page(@page).per(@per_page)
                    .order(created_at: :desc)
+
+                   
+                   # The `geocoded` scope filters only flats with coordinates
+    @markers = @orders.geocoded.map do |order|
+                     {
+                       lat: order.latitude,
+                       lng: order.longitude
+                     }
+                   end
+                 
   end
   
-  def show;end  
+  def show
+    @marker = {lat: @order.latitude, lng: @order.longitude}
+  end  
 
   def new
     @order = Order.new

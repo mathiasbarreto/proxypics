@@ -1,6 +1,9 @@
 class Order < ApplicationRecord
   include Filterable
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   has_many_attached :images
 
   validates :address, presence: true, length: { maximum: 50 }
